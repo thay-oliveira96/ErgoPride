@@ -9,9 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.trosoftware.sgst.domain.dtos.EmpresasDTO;
+
 @Entity
 public class Empresas implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +29,7 @@ public class Empresas implements Serializable {
 	private String endereco;
 	private String telefone;
 	private String email;
-	private double funcionarios;
+	private String funcionarios;
 	private String departamentos;
 	
 	
@@ -34,8 +37,16 @@ public class Empresas implements Serializable {
 		super();
 		
 	}
+	
+	public Empresas(EmpresasDTO empresasDTO) {
+		 this(empresasDTO.getId(), empresasDTO.getNome(), empresasDTO.getCnpj() ,empresasDTO.getCep(),
+				 empresasDTO.getEndereco(), empresasDTO.getTelefone(), 
+				 empresasDTO.getEmail(), empresasDTO.getFuncionarios(),
+				 empresasDTO.getDepartamentos());
+		}
+	
 	public Empresas(Integer id, String nome, String cnpj, String cep, String endereco, String telefone, String email,
-			double funcionarios, String departamentos) {
+			String funcionarios, String departamentos) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -89,10 +100,10 @@ public class Empresas implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public double getFuncionarios() {
+	public String getFuncionarios() {
 		return funcionarios;
 	}
-	public void setFuncionarios(double funcionarios) {
+	public void setFuncionarios(String funcionarios) {
 		this.funcionarios = funcionarios;
 	}
 	public String getDepartamentos() {
@@ -103,7 +114,7 @@ public class Empresas implements Serializable {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(cep, cnpj, departamentos, email, endereco, funcionarios, id, nome, telefone);
+		return Objects.hash(id, nome, cnpj, telefone, email, endereco, cep, funcionarios, departamentos);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -117,7 +128,7 @@ public class Empresas implements Serializable {
 		return Objects.equals(cep, other.cep) && Objects.equals(cnpj, other.cnpj)
 				&& Objects.equals(departamentos, other.departamentos) && Objects.equals(email, other.email)
 				&& Objects.equals(endereco, other.endereco)
-				&& Double.doubleToLongBits(funcionarios) == Double.doubleToLongBits(other.funcionarios)
+				&& Objects.equals(funcionarios, other.funcionarios)
 				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
 				&& Objects.equals(telefone, other.telefone);
 	}

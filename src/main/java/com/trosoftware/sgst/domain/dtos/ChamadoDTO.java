@@ -29,7 +29,6 @@ public class ChamadoDTO implements Serializable {
 	@NotNull(message = "O campo CLIENTE é requerido")
 	private Integer cliente;
 	@NotNull(message = "O campo Gestor é requerido")
-	private Integer gestor;
 	private String nomeTecnico;
 	private String nomeCliente;
 
@@ -123,14 +122,6 @@ public class ChamadoDTO implements Serializable {
 		this.cliente = cliente;
 	}
 	
-	public Integer getGestor() {
-		return gestor;
-	}
-
-	public void setGestor(Integer gestor) {
-		this.gestor = gestor;
-	}
-
 	public String getNomeTecnico() {
 		return nomeTecnico;
 	}

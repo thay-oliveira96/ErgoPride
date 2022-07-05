@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.trosoftware.sgst.domain.Chamado;
 import com.trosoftware.sgst.domain.Cliente;
+import com.trosoftware.sgst.domain.Empresas;
 import com.trosoftware.sgst.domain.Tecnico;
 import com.trosoftware.sgst.domain.enums.Perfil;
 import com.trosoftware.sgst.domain.enums.Prioridade;
 import com.trosoftware.sgst.domain.enums.Status;
 import com.trosoftware.sgst.repositories.ChamadoRepository;
+import com.trosoftware.sgst.repositories.EmpresaRepository;
 import com.trosoftware.sgst.repositories.PessoaRepository;
 
 @Service
@@ -24,6 +26,8 @@ public class DBService {
 	private PessoaRepository pessoaRepository;
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	@Autowired
+	private EmpresaRepository empresaRepository;
 
 	public void instanciaDB() {
 
@@ -47,8 +51,12 @@ public class DBService {
 		Chamado c4 = new Chamado(null, Prioridade.ALTA, Status.ABERTO, "Chamado 4", "Teste chamado 4", tec3, cli3);
 		Chamado c5 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 5", "Teste chamado 5", tec2, cli1);
 		Chamado c6 = new Chamado(null, Prioridade.BAIXA, Status.ENCERRADO, "Chamado 7", "Teste chamado 6", tec1, cli5);
-
+		
+		Empresas e1 = new Empresas(null, "Empresa Teste", "00.000.000/0000-00", "0000-000", "Rua Teste, 123", "teste", "Teste dptos", "teste", "teste");
+		Empresas e2 = new Empresas(null, "Empresa Teste 1", "11.111.111/111-11", "1111-111", "Rua Teste 1, 345", "teste1 ", "Teste dptos 1", "teste 1", "teste 1");
+		
 		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, cli1, cli2, cli3, cli4, cli5));
 		chamadoRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
+		empresaRepository.saveAll(Arrays.asList(e1, e2));
 	}
 }
