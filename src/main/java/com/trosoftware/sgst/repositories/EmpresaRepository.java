@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.trosoftware.sgst.domain.Empresas;
-import com.trosoftware.sgst.domain.Pessoa;
 
 //Pesistencia de dados
 

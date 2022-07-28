@@ -26,8 +26,7 @@ public class Departamentos implements Serializable {
 	private List<Empresas> empresas;
 	
 	public Departamentos() {
-		super();
-		
+		super();	
 	}
 	public Departamentos(DepartamentosDTO departamentosDTO) {
 		 this(departamentosDTO.getId(), departamentosDTO.getNome());

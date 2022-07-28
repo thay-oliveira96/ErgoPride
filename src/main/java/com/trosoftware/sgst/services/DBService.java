@@ -9,14 +9,12 @@ import org.springframework.stereotype.Service;
 import com.trosoftware.sgst.domain.Chamado;
 import com.trosoftware.sgst.domain.Cliente;
 import com.trosoftware.sgst.domain.Departamentos;
-import com.trosoftware.sgst.domain.Empresas;
 import com.trosoftware.sgst.domain.Tecnico;
 import com.trosoftware.sgst.domain.enums.Perfil;
 import com.trosoftware.sgst.domain.enums.Prioridade;
 import com.trosoftware.sgst.domain.enums.Status;
 import com.trosoftware.sgst.repositories.ChamadoRepository;
 import com.trosoftware.sgst.repositories.DepartamentosRepository;
-import com.trosoftware.sgst.repositories.EmpresaRepository;
 import com.trosoftware.sgst.repositories.PessoaRepository;
 
 @Service
@@ -28,8 +26,6 @@ public class DBService {
 	private PessoaRepository pessoaRepository;
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-	@Autowired
-	private EmpresaRepository empresaRepository;
 	@Autowired
 	private DepartamentosRepository departamentosRepository;
 
