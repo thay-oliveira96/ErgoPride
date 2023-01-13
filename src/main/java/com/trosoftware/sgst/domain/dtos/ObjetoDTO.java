@@ -11,11 +11,10 @@ public class ObjetoDTO implements Serializable {
 
 	private Integer id;
 	@NotNull(message = "O campo Nome é requerido")
-	
 	private String descricao;
 	
 	public ObjetoDTO() {
-		super();	
+		super();
 	}
 	public ObjetoDTO(Objeto obj) {
 		super();

@@ -9,13 +9,19 @@ import org.springframework.stereotype.Service;
 import com.trosoftware.sgst.domain.Chamado;
 import com.trosoftware.sgst.domain.Cliente;
 import com.trosoftware.sgst.domain.Departamentos;
+import com.trosoftware.sgst.domain.Funcoes;
+import com.trosoftware.sgst.domain.Objeto;
+import com.trosoftware.sgst.domain.SegCorpoPrinc;
 import com.trosoftware.sgst.domain.Tecnico;
 import com.trosoftware.sgst.domain.enums.Perfil;
 import com.trosoftware.sgst.domain.enums.Prioridade;
 import com.trosoftware.sgst.domain.enums.Status;
 import com.trosoftware.sgst.repositories.ChamadoRepository;
 import com.trosoftware.sgst.repositories.DepartamentosRepository;
+import com.trosoftware.sgst.repositories.FuncoesRepository;
+import com.trosoftware.sgst.repositories.ObjetoRepository;
 import com.trosoftware.sgst.repositories.PessoaRepository;
+import com.trosoftware.sgst.repositories.SegCorpoPrincRepository;
 
 @Service
 public class DBService {
@@ -28,10 +34,16 @@ public class DBService {
 	private BCryptPasswordEncoder encoder;
 	@Autowired
 	private DepartamentosRepository departamentosRepository;
+	@Autowired
+	private FuncoesRepository funcoesRepository;
+	@Autowired
+	private ObjetoRepository objetoRepository;
+	@Autowired
+	private SegCorpoPrincRepository segCorpoPrincRepository;
 
 	public void instanciaDB() {
 
-		Tecnico tec1 = new Tecnico(null, "Administrador", "550.482.150-95", "administrador@ergopride.com", encoder.encode("admin123"));
+		Tecnico tec1 = new Tecnico(null, "Administrador", "550.482.150-95", "administrador@ergopride.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
 
 		Cliente cli1 = new Cliente(null, "Albert Einstein", "111.661.890-74", "einstein@mail.com", encoder.encode("123"));
@@ -52,9 +64,25 @@ public class DBService {
 		Departamentos d2 = new Departamentos(null, "Marketing");
 		Departamentos d3 = new Departamentos(null, "Teste");
 		
+		Funcoes f1 = new Funcoes(null, "Auxiliar de Escritorio");
+		Funcoes f2 = new Funcoes(null, "Contador");
+		Funcoes f3 = new Funcoes(null, "Mecanico");
+		
+		Objeto o1 = new Objeto(null, "Cadeira 0,3 x 0,7 mts");
+		Objeto o2 = new Objeto(null, "Mesa");
+		Objeto o3 = new Objeto(null, "Teclado");
+		
+		SegCorpoPrinc sc1 = new SegCorpoPrinc(null, "Braço");
+		SegCorpoPrinc sc2 = new SegCorpoPrinc(null, "Pernas");
+		SegCorpoPrinc sc3 = new SegCorpoPrinc(null, "Lombar");
+		
+		
 		pessoaRepository.saveAll(Arrays.asList(tec1, cli1, cli2, cli3, cli4, cli5));
 		chamadoRepository.saveAll(Arrays.asList(c1, c2, c6));
 		//empresaRepository.saveAll(Arrays.asList(e1, e2));
 		departamentosRepository.saveAll(Arrays.asList(d1, d2, d3));
+		funcoesRepository.saveAll(Arrays.asList(f1, f2, f3));
+		objetoRepository.saveAll(Arrays.asList(o1, o2, o3));
+		segCorpoPrincRepository.saveAll(Arrays.asList(sc1, sc2, sc3));
 	}
 }

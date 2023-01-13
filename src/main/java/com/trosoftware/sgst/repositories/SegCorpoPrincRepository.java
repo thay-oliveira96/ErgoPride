@@ -9,5 +9,5 @@ import com.trosoftware.sgst.domain.SegCorpoPrinc;
 //Pesistencia de dados
 
 public interface SegCorpoPrincRepository extends JpaRepository<SegCorpoPrinc, Integer> {
-	Optional<SegCorpoPrinc> findByDescricao(String objeto);
+	Optional<SegCorpoPrinc> findByDescricao(String segCorpoPrinc);
 }

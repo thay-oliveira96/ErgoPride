@@ -1,12 +1,14 @@
 package com.trosoftware.sgst.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import com.trosoftware.sgst.domain.dtos.FuncoesDTO;
 
@@ -19,6 +21,9 @@ public class Funcoes implements Serializable {
 	private Integer id;
 	
 	private String nome;
+	
+	@ManyToMany(mappedBy="cargo")
+	private List<AetCargo> aetCargo;
 	
 	//@ManyToMany(mappedBy="departamentos")
 	//private List<Empresas> empresas;
